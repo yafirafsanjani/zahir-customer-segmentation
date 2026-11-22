@@ -1,0 +1,3 @@
+# Runtime dashboard; analysis dependencies remain in requirements.txt.
+streamlit==1.67.0
+supabase==2.34.1

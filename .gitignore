@@ -2,5 +2,10 @@ venv_segmentasi_zahir/
 data/raw/
 outputs/
 .env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+.streamlit/secrets.*.toml
+!.streamlit/secrets.toml.example
 .ipynb_checkpoints/
 __pycache__/
