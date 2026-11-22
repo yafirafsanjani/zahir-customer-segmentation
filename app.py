@@ -7,7 +7,7 @@ from decimal import Decimal
 import pandas as pd
 import streamlit as st
 from supabase import create_client
-from supabase.lib.client_options import ClientOptions
+from supabase.lib.client_options import SyncClientOptions
 
 from zahir_dashboard.backend import (
     DashboardError,
@@ -165,9 +165,13 @@ def main() -> None:
         try:
             # Never share an authenticated client via cache_resource or a module global.
             st.session_state["_supabase_client"] = create_client(
-                settings.url, settings.key,
-                options=ClientOptions(auto_refresh_token=False, persist_session=False),
-            )
+                settings.url,
+                settings.key,
+                options=SyncClientOptions(
+                    auto_refresh_token=False,
+                    persist_session=False,
+            ),
+)
         except Exception:
             st.error("Koneksi Supabase belum dapat dibuat. Periksa konfigurasi administrator.")
             return
